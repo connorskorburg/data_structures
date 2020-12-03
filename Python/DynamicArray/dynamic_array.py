@@ -21,7 +21,9 @@ class DynamicArray:
     return self
   # insert value at specific location
   def insertValue(self, value=None, idx=None):
-    if idx > len(self.arr) or value == None or idx==None:
+    if idx == None:
+      return self
+    if idx > len(self.arr) or value == None:
       return self
     elif idx == len(self.arr):
       self.addToBack(value)
@@ -51,8 +53,3 @@ class DynamicArray:
         self.removeIndex(i)
         break
     return self
-array = DynamicArray([2,4,6,8,10]);
-# result = DynamicArray([2,4,6,8,10,12])
-# result.addToFront(0).addToFront(-2).addToBack(14).removeBack().removeFront()
-# result.insertValue(100, 2).insertValue(45, 5).insertValue(2343243, 0).insertValue(213412342342, 9).removeIndex(9).removeIndex(0).removeIndex(2).removeIndex(1).removeValue(10)
-# print(result.arr)
