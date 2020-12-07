@@ -33,8 +33,8 @@ class DynamicArray {
     return this;
   }
   // insert value at specific location in array
-  insertAt = (value=null, idx=null) => {
-    if(value === null || idx === null || idx > this.arr.length) {
+  insertAt = (value, idx=null) => {
+    if(value === undefined || idx === null || idx > this.arr.length) {
       return this;
     } else if (idx === this.arr.length) {
       this.addToBack(value);
@@ -44,7 +44,6 @@ class DynamicArray {
     } else {
       this.arr[this.arr.length] = value;
       for (let i = this.arr.length - 2; i >= 0; i--) {
-        console.log(i, this.arr[i]);
         if (i >= idx) {
           let temp = this.arr[i];
           this.arr[i] = this.arr[i + 1];
@@ -54,13 +53,43 @@ class DynamicArray {
       return this;
     }
   }
+  // remove value at index
+  removeIndex(idx=null){
+    if(idx === null || idx >= this.arr.length || idx < 0){
+      return this;
+    } else if (idx === 0) {
+      this.removeFront();
+    } else if (idx === this.arr.length - 1) {
+      this.removeBack()
+    } else {
+      for (let i = 0; i < this.arr.length; i++) {
+        if (i >= idx) {
+          this.arr[i] = this.arr[i + 1];
+        }
+      }
+      this.removeBack();
+      return this;
+    }
+  }
+  // remove first value that matches value given
+  removeValue = (value) => {
+    if (value === undefined) {
+      return this;
+    } else {
+      for (let i = 0; i < this.arr.length; i++) {
+        if (this.arr[i] === value) {
+          this.removeIndex(i);
+          break;
+        }
+      }
+    }
+    return this;
+  }
 }
 
-const myArr = new DynamicArray([2,4,6,8,10]);
-// myArr.addToBack(12).addToFront(0);
-// myArr.addToFront(100)
-// myArr.addToBack(12);
-// myArr.removeBack();
-// myArr.removeFront();
-myArr.insertAt(100, 2);
-console.log(myArr.arr);
+// const myArr = new DynamicArray([1,2,3,4,5,6,7]);
+
+// myArr.addToBack(7);
+// console.log(myArr.arr);
+
+module.exports = DynamicArray;
