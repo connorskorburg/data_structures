@@ -21,6 +21,9 @@ class DynamicArray {
   }
   // Remove last element from array
   removeBack = _=> {
+    if (this.arr.length === 0) {
+      return this;
+    }
     this.arr.length = this.arr.length - 1;
     return this;
   }
@@ -60,7 +63,7 @@ class DynamicArray {
     } else if (idx === 0) {
       this.removeFront();
     } else if (idx === this.arr.length - 1) {
-      this.removeBack()
+      this.removeBack();
     } else {
       for (let i = 0; i < this.arr.length; i++) {
         if (i >= idx) {
@@ -86,10 +89,5 @@ class DynamicArray {
     return this;
   }
 }
-
-// const myArr = new DynamicArray([1,2,3,4,5,6,7]);
-
-// myArr.addToBack(7);
-// console.log(myArr.arr);
 
 module.exports = DynamicArray;
