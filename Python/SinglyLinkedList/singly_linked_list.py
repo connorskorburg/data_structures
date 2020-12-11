@@ -35,7 +35,7 @@ class SinglyLinkedList:
     return self
   # remove node from beginning of list
   def removeFront(self):
-    self.head = self.head.next if self.head.next != None else None
+    self.head = self.head.next
     return self
   # insert value at specific index
   def insertValue(self, value, idx):
@@ -75,12 +75,20 @@ class SinglyLinkedList:
         runner = runner.next
       return self
   # remove first value given
-  def removeValue(self, val):
+  def removeValue(self, value):
     runner = self.head
+    if runner.value == value:
+      self.head = self.head.next
     while runner:
-      print(runner.value, runner.next.value)
-      if runner.next.value == val:
-        pass
+      if runner.next != None:
+        if runner.next.value == value and runner.next.next != None:
+          runner.next = runner.next.next
+          break
+        if runner.next.value == value and runner.next.next == None:
+          runner.next = None
+          break
+      # if runner.next.value == val:
+        # pass
       runner = runner.next
     return self
   # display nodes in list
@@ -97,4 +105,4 @@ class SinglyLinkedList:
       i += 1
     print(arr)
     return self
-myList = SinglyLinkedList(10).addToBack(11).addToBack(12).addToBack(13).addToBack(14).printValues().addToFront(9).removeBack().printValues().removeFront().printValues().insertValue(100, 2).printValues().removeIndex(4).printValues().addToBack(16).removeValue(11).printValues()
+myList = SinglyLinkedList(10).addToBack(11).addToBack(12).addToBack(13).addToBack(14).printValues().addToFront(9).removeBack().printValues().removeFront().printValues().insertValue(100, 2).printValues().removeIndex(4).addToBack(16).printValues().removeValue(16).printValues()
