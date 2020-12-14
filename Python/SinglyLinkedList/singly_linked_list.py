@@ -1,7 +1,7 @@
 # create linked list with no built-in methods
 # Create Node to add to list
 class Node:
-  def __init__(self, value):
+  def __init__(self, value=None):
     self.value = value
     self.next = None
 
@@ -105,4 +105,4 @@ class SinglyLinkedList:
       i += 1
     print(arr)
     return self
-myList = SinglyLinkedList(10).addToBack(11).addToBack(12).addToBack(13).addToBack(14).printValues().addToFront(9).removeBack().printValues().removeFront().printValues().insertValue(100, 2).printValues().removeIndex(4).addToBack(16).printValues().removeValue(16).printValues()
+# myList = SinglyLinkedList(10).addToBack(11).addToBack(12).addToBack(13).addToBack(14).printValues().addToFront(9).removeBack().printValues().removeFront().printValues().insertValue(100, 2).printValues().removeIndex(4).addToBack(16).printValues().removeValue(16).printValues()
