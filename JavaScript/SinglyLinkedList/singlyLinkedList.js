@@ -65,7 +65,67 @@ class SinglyLinkedList {
     this.head = this.head.next;
     return this;
   }
+  // insert value at index
+  insertValue = (value, idx) => {
+    let runner = this.head;
+    let i = 0;
+    while(runner) {
+      if (idx == 0) {
+        this.addToFront(value);
+        return this;
+      }
+      if (i + 1 === idx) {
+        let newNode = new Node(value);
+        let next = runner.next;
+        runner.next = newNode;
+        newNode.next = next;
+        return this;
+      }
+      runner = runner.next;
+      i++;
+    }
+    return this;
+  }
+  // remove index
+  removeIndex = idx => {
+    let runner = this.head;
+    if (idx < 0) {
+      return this;
+    } 
+    if (idx === 0) {
+      this.removeFront();
+      return this;
+    }
+    let i = 0;
+    while(runner){
+      if (i + 1 === idx) {
+        runner.next = runner.next.next;
+        return this;
+      }
+      runner = runner.next;
+      i++;
+    }
+    return this;
+  }
+  // remove first instance of value
+  removeValue = value => {
+    let runner = this.head;
+    if (runner.value === value) {
+      this.removeFront();
+      return this;
+    }
+    while(runner.next) {
+      if (runner.next.value === value) {
+        runner.next = runner.next.next;
+        return this;
+      }
+      console.log(runner.value, runner.next.value);
+      
+      runner = runner.next;
+    }
+    return this;
+  }
 }
 
 const result = new SinglyLinkedList(10);
-result.addToBack(12).addToFront(8).addToBack(14).addToBack(16).removeBack().removeBack().removeFront().printValues();
+result.addToBack(12).addToFront(8).addToBack(14).addToBack(16).removeBack().removeBack().removeFront().addToBack(14).addToBack(16).insertValue(15,3).removeIndex(3).removeValue(14).printValues();
