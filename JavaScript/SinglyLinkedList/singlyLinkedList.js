@@ -69,7 +69,7 @@ class SinglyLinkedList {
   insertValue = (value, idx) => {
     let runner = this.head;
     let i = 0;
-    while(runner) {
+    while(runner && idx !== undefined) {
       if (idx == 0) {
         this.addToFront(value);
         return this;
@@ -118,14 +118,13 @@ class SinglyLinkedList {
       if (runner.next.value === value) {
         runner.next = runner.next.next;
         return this;
-      }
-      console.log(runner.value, runner.next.value);
-      
+      }      
       runner = runner.next;
     }
     return this;
   }
 }
 
-const result = new SinglyLinkedList(10);
-result.addToBack(12).addToFront(8).addToBack(14).addToBack(16).removeBack().removeBack().removeFront().addToBack(14).addToBack(16).insertValue(15,3).removeIndex(3).removeValue(14).printValues();
+
+exports.SinglyLinkedList = SinglyLinkedList;
+exports.Node = Node;
