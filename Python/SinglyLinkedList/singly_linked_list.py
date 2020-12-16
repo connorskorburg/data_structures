@@ -10,8 +10,10 @@ class SinglyLinkedList:
   def __init__(self, value):
     self.head = Node(value)
   # add node to back of list
-  def addToBack(self, value):
+  def addToBack(self, value=None):
     runner = self.head
+    if value == None:
+      return self
     while runner:
       if runner.next == None:
         runner.next = Node(value)
@@ -19,7 +21,9 @@ class SinglyLinkedList:
       runner = runner.next
     return self
   # add node to front of list
-  def addToFront(self, value):
+  def addToFront(self, value=None):
+    if value == None:
+      return self
     currentHead = self.head
     newHead = Node(value)
     self.head = Node(value)
@@ -28,6 +32,8 @@ class SinglyLinkedList:
   # remove node from back of list
   def removeBack(self):
     runner = self.head
+    if runner.next == None:
+      return self
     while runner:
       if runner.next.next == None:
         runner.next = None
@@ -35,6 +41,8 @@ class SinglyLinkedList:
     return self
   # remove node from beginning of list
   def removeFront(self):
+    if self.head.next == None:
+      return self
     self.head = self.head.next
     return self
   # insert value at specific index
@@ -105,4 +113,3 @@ class SinglyLinkedList:
       i += 1
     print(arr)
     return self
-# myList = SinglyLinkedList(10).addToBack(11).addToBack(12).addToBack(13).addToBack(14).printValues().addToFront(9).removeBack().printValues().removeFront().printValues().insertValue(100, 2).printValues().removeIndex(4).addToBack(16).printValues().removeValue(16).printValues()
