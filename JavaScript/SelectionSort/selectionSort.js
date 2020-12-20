@@ -44,11 +44,8 @@ const selectionSort = arr => {
     let temp = arr[i];
     arr[i] = arr[minIndex];
     arr[minIndex] = temp;
-    console.log(i, arr);
   }
   return arr;
 }
 
-const result1 = selectionSort([2, 5, 4, 3, 8, 1, 20]);
-
-console.log(result1);
+exports.selectionSort = selectionSort;
