@@ -14,8 +14,9 @@ Function Description
 '''
 
 
-def jumping_on_clouds():
-  return None
+def jumping_on_clouds(arr):
+  for i in range(0, len(arr)):
+    print(arr[i])
 
-res = jumping_on_clouds()
+res = jumping_on_clouds([0,1,0,0,0,1,0])
 print(res)
