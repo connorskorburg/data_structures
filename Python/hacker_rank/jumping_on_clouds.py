@@ -15,6 +15,9 @@ Function Description
 
 
 def jumping_on_clouds(arr):
+  # TODO: find the cumulus and thunderhead clouds. 
+          # Find if player is allowed to jump on clouds
+            # find the minimum amount of jumps to finish game
   for i in range(0, len(arr)):
     print(arr[i])
 
