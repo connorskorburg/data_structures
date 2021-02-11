@@ -16,10 +16,21 @@ Function Description
 
 def jumping_on_clouds(arr):
   # TODO: find the cumulus and thunderhead clouds. 
-          # Find if player is allowed to jump on clouds
-            # find the minimum amount of jumps to finish game
-  for i in range(0, len(arr)):
-    print(arr[i])
+  # Find if player is allowed to jump on clouds
+  # find the minimum amount of jumps to finish game
+  n = int(input().strip())
+  c = [int(c_temp) for c_temp in input().strip().split(' ')]
+
+  res = 0
+  i = 0
+  while i < n-1:
+    if i+2<n and c[i+2] == 0:
+      i = i+2
+      res += 1
+    else:
+      i = i+1
+      res += 1
+  print(res)
 
 res = jumping_on_clouds([0,1,0,0,0,1,0])
 print(res)
